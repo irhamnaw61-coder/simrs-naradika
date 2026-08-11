@@ -1,0 +1,843 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 12px;
+}
+
+body {
+    background: #eef2f7 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.03"><path d="M0 0h50v50H0zM50 50h50v50H50z" fill="%23000"/></svg>');
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: #000;
+}
+
+/* Top Toolbar / Menu Navigasi Atas */
+.top-toolbar {
+    background: linear-gradient(to bottom, #f8f9fa, #d6d8db);
+    border-bottom: 1px solid #b8b9bc;
+    display: flex;
+    align-items: center;
+    padding: 2px 5px;
+    gap: 2px;
+    box-shadow: inset 0 1px 0 #fff;
+}
+
+.sub-toolbar {
+    background: linear-gradient(to bottom, #ffffff, #e9ecef);
+    border-bottom: 1px solid #adadad;
+}
+
+.toolbar-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 8px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #333;
+}
+
+.toolbar-item:hover {
+    background: #e2e6ea;
+    border-color: #adb5bd;
+}
+
+.menu-utama-btn {
+    color: #c92a2a;
+    font-weight: bold;
+}
+
+.logout-btn {
+    color: #e67700;
+}
+
+.keluar-btn {
+    color: #c92a2a;
+}
+
+.toolbar-separator {
+    width: 1px;
+    height: 20px;
+    background: #adb5bd;
+    margin: 0 4px;
+}
+
+/* Main Container Area */
+.main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    background: #f0f3f8;
+}
+
+/* Dashboard View (20 Menu Grid) */
+.dashboard-view {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dashboard-header-bar {
+    background: #fff;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.dashboard-header-bar select {
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 350px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, auto);
+    gap: 15px;
+}
+
+.menu-card {
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    padding: 15px 10px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.menu-card:hover {
+    background: #e8f0fe;
+    border-color: #4285f4;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.menu-icon-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.menu-title {
+    font-weight: bold;
+    color: #202124;
+}
+
+/* Module Workspace (Registrasi View) */
+.module-workspace {
+    flex: 1;
+    display: none;
+    flex-direction: column;
+    padding: 8px;
+    gap: 8px;
+    overflow-y: auto;
+}
+
+.module-workspace.active {
+    display: flex;
+}
+
+/* Form Layout */
+.form-section {
+    background: #fff;
+    border: 1px solid #b8b9bc;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    gap: 8px;
+}
+
+.form-row label {
+    width: 110px;
+    text-align: right;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-row input[type="text"],
+.form-row select {
+    padding: 3px 6px;
+    border: 1px solid #a0a0a0;
+    border-radius: 2px;
+    background: #fff;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.btn-lookup {
+    background: #e0e0e0;
+    border: 1px solid #adadad;
+    border-radius: 2px;
+    padding: 2px 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-lookup:hover {
+    background: #d4d4d4;
+}
+
+/* Table & Data Grid */
+.table-container {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #b8b9bc;
+    border-radius: 4px;
+    overflow-y: auto;
+    max-height: 250px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    white-space: nowrap;
+}
+
+th, td {
+    padding: 5px 8px;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+}
+
+th {
+    background: linear-gradient(to bottom, #f1f3f5, #e9ecef);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    border-bottom: 2px solid #adb5bd;
+    font-weight: bold;
+}
+
+tr:hover {
+    background: #f1f3f5;
+    cursor: pointer;
+}
+
+tr.selected {
+    background: #d0e1fd !important;
+}
+
+/* Action Toolbar Bawah */
+.action-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 0;
+    background: transparent;
+}
+
+.btn-action {
+    padding: 5px 14px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.btn-simpan { background: #28a745; }
+.btn-simpan:hover { background: #218838; }
+
+.btn-baru { background: #17a2b8; }
+.btn-baru:hover { background: #138496; }
+
+.btn-hapus { background: #dc3545; }
+.btn-hapus:hover { background: #c82333; }
+
+.btn-ganti { background: #ffc107; color: #000; }
+.btn-ganti:hover { background: #e0a800; }
+
+.btn-cetak { background: #6c757d; }
+.btn-cetak:hover { background: #5a6268; }
+
+.btn-semua { background: #007bff; }
+.btn-semua:hover { background: #0056b3; }
+
+.btn-keluar { background: #343a40; }
+.btn-keluar:hover { background: #23272b; }
+
+/* Status Bar / Footer Paling Bawah */
+.status-bar {
+    background: linear-gradient(to bottom, #f8f9fa, #d6d8db);
+    border-top: 1px solid #b8b9bc;
+    padding: 3px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #333;
+}
+
+/* Modal Pop-up Lookup */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-dialog {
+    background: #fff;
+    border: 1px solid #4a5568;
+    border-radius: 5px;
+    width: 850px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-header {
+    background: linear-gradient(to bottom, #343a40, #212529);
+    color: #fff;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 12px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.modal-footer {
+    padding: 8px 12px;
+    background: #f1f3f5;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+/* Tabs inside Modal Pasien */
+.tab-headers {
+    display: flex;
+    gap: 2px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.tab-btn {
+    padding: 6px 12px;
+    background: #e9ecef;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.tab-btn.active {
+    background: #fff;
+    border-bottom: 1px solid #fff;
+    margin-bottom: -1px;
+    color: #0056b3;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ========================================== */
+/* CSS TAMBAHAN UNTUK LOGIN & FILTER REGISTRASI */
+/* ========================================== */
+
+.login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.login-card {
+    background: #f0f3f8;
+    border: 2px solid #343a40;
+    border-radius: 6px;
+    width: 350px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+.login-header {
+    background: linear-gradient(to bottom, #343a40, #212529);
+    color: #fff;
+    padding: 8px 12px;
+    font-weight: bold;
+    font-size: 13px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.login-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ========================================== */
+/* PERBAIKAN CSS SESUAI HTML SIMRS BARU */
+/* ========================================== */
+
+/* 1. Ubah Menu Atas (Toolbar) jadi Kotak Tombol Elegan */
+.top-toolbar {
+    background: #e9ecef !important;
+    border-bottom: 2px solid #ced4da !important;
+    padding: 6px !important;
+    gap: 4px !important;
+}
+
+.toolbar-item {
+    background: #ffffff !important;
+    border: 1px solid #adb5bd !important;
+    border-radius: 4px !important;
+    padding: 5px 10px !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    color: #212529 !important;
+    cursor: pointer !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: all 0.2s;
+}
+
+.toolbar-item:hover {
+    background: #495057 !important;
+    color: #ffffff !important;
+    border-color: #343a40 !important;
+}
+
+/* 2. Warna Kotak Dashboard (Registrasi HIJAU, Lainnya MERAH) */
+.menu-grid .menu-card {
+    background-color: #dc3545 !important; /* Default semua merah */
+    color: white !important;
+    border-radius: 6px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    font-weight: bold;
+    transition: transform 0.1s;
+}
+
+.menu-grid .menu-card:hover {
+    transform: scale(1.02);
+    opacity: 0.95;
+}
+
+/* Kotak Menu Registrasi dikhususkan jadi HIJAU */
+.menu-grid .menu-card:nth-child(3) {
+    background-color: #28a745 !important; 
+}
+
+/* Styling Tambahan Modul Rawat Jalan */
+.rawat-jalan-container { display: flex; flex: 1; height: calc(100vh - 90px); overflow: hidden; background: #fff; }
+.sub-tab-content { display: none; }
+.sub-tab-content.active { display: block; }
+.paperclip-btn { background: #edf2f7; border: 1px solid #ccc; padding: 0 6px; border-radius: 3px; cursor: pointer; font-size: 13px; }
+.paperclip-btn:hover { background: #cbd5e0; }
+.rj-sidebar { width: 220px; background: #fff; border-right: 1px solid #ccc; display: flex; flex-direction: column; overflow-y: auto; }
+.rj-sidebar-item { padding: 6px 10px; border-bottom: 1px solid #edf2f7; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 11px; }
+.rj-sidebar-item:hover { background: #ebf8ff; color: #2b6cb0; font-weight: 500; }
+.rj-sidebar-item.active { background: #bee3f8; color: #1a365d; font-weight: bold; }
+.rj-content-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.rj-tab-nav { display: flex; background: #e2e8f0; border-bottom: 1px solid #ccc; overflow-x: auto; }
+.rj-tab-btn { padding: 6px 10px; background: #edf2f7; border: none; border-right: 1px solid #ccc; cursor: pointer; font-size: 11px; font-weight: 500; white-space: nowrap; }
+.rj-tab-btn:hover { background: #cbd5e0; }
+.rj-tab-btn.active { background: #fff; color: #1a365d; font-weight: bold; border-bottom: 2px solid #1a365d; }
+
+/* Styling Modul Rawat Jalan - SIMRS Naradika */
+.rj-module-container {
+    display: none;
+    position: absolute;
+    top: 85px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 110px);
+    background: #f0f4f8;
+    z-index: 95;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    color: #2d3748;
+}
+
+.rj-top-bar {
+    background: #e2e8f0;
+    padding: 6px 10px;
+    border-bottom: 1px solid #cbd5e0;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font-weight: 500;
+}
+
+.rj-tab-header {
+    display: flex;
+    background: #edf2f7;
+    border-bottom: 1px solid #cbd5e0;
+}
+
+.rj-tab-header button {
+    padding: 6px 14px;
+    background: #e2e8f0;
+    border: none;
+    border-right: 1px solid #cbd5e0;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.rj-tab-header button.active {
+    background: #ffffff;
+    color: #1a365d;
+    border-bottom: 2px solid #1a365d;
+}
+
+.rj-workspace-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #ffffff;
+    padding: 8px;
+}
+
+.rj-table-container {
+    flex: 1;
+    overflow: auto;
+    border: 1px solid #cbd5e0;
+    background: #ffffff;
+}
+
+.rj-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.rj-table th, .rj-table td {
+    border: 1px solid #cbd5e0;
+    padding: 5px 8px;
+    text-align: left;
+}
+
+.rj-table th {
+    background: #edf2f7;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.rj-table tr:hover {
+    background: #ebf8ff;
+    cursor: pointer;
+}
+
+.rj-footer-control {
+    background: #edf2f7;
+    padding: 8px 10px;
+    border-top: 1px solid #cbd5e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Jendela Ruang Pemeriksaan (Setelah Double Click Pasien) */
+#ruangPemeriksaanModal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.rp-dialog {
+    width: 96vw;
+    height: 92vh;
+    background: #f7fafc;
+    border: 1px solid #a0aec0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    border-radius: 3px;
+}
+
+.rp-main-layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.rp-sidebar {
+    width: 230px;
+    background: #ffffff;
+    border-right: 1px solid #cbd5e0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.rp-sidebar-item {
+    padding: 6px 10px;
+    border-bottom: 1px solid #edf2f7;
+    cursor: pointer;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.rp-sidebar-item:hover {
+    background: #ebf8ff;
+    color: #2b6cb0;
+}
+
+.rp-content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.rp-sub-tab-content {
+    display: none;
+    padding: 10px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.rp-sub-tab-content.active {
+    display: block;
+}
+
+/* Styling Tombol Toolbar Saat Sedang Aktif / Dipilih */
+.sub-toolbar .toolbar-item.active-menu {
+    background: #4a5568 !important; /* Warna gelap/hitam saat aktif */
+    color: #ffffff !important;
+    border-color: #2d3748 !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* --- PINDAHKAN TOMBOL KE POJOK KIRI BAWAH --- */
+.dual-slide-btn {
+    position: fixed;
+    top: 25px;
+    right: 25px; /* Diganti dari 'right' jadi 'left' supaya aman di kiri */
+    background: #27ae60;
+    color: white;
+    padding: 16px 26px;
+    border-radius: 35px;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: sans-serif;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: bounceAnim 1.8s infinite;
+    border: 2.5px solid #fff;
+    transition: background 0.3s;
+}
+
+.dual-slide-btn:hover {
+    background: #219653;
+}
+
+@keyframes bounceAnim {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-8px);}
+    60% {transform: translateY(-4px);}
+}
+
+
+
+/* --- 2. PANEL KIRI (PROFIL) & PANEL KANAN (PANDUAN) --- */
+.dual-panel {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 320px;
+    max-height: 85vh;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    z-index: 9998;
+    overflow-y: auto;
+    font-family: sans-serif;
+    padding: 25px;
+    box-sizing: border-box;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+    opacity: 0;
+}
+
+/* Posisi Awal Tersembunyi (Di Luar Layar) */
+.panel-kiri {
+    left: -350px;
+}
+
+.panel-kanan {
+    right: -350px;
+}
+
+/* Saat Panel Aktif / Terbuka */
+.panel-kiri.active {
+    left: 30px;
+    opacity: 1;
+}
+
+.panel-kanan.active {
+    right: 30px;
+    opacity: 1;
+}
+
+/* Tombol Close (X) di dalam Panel */
+.panel-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.panel-close-btn:hover {
+    background: #c0392b;
+}
+
+/* --- LAYAR DIJADIKAN TERANG (TIDAK ADA EFEK GELAP) --- */
+.screen-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent; /* Bebas gelap, jadi terang benderang */
+    z-index: 9997;
+}
+
+/* Garis tipis hijau di sebelah kiri tombol */
+.menu-hijau {
+    border-left: 4px solid #27ae60 !important;
+}
+
+/* Garis tipis merah di sebelah kiri tombol */
+.menu-merah {
+    border-left: 4px solid #e74c3c !important;
+}
+/* Gaya tombol aksi bawah (outline style) */
+#footerAksiPemeriksaan button {
+    padding: 5px 12px !important;
+    font-weight: 600;
+    border-radius: 4px;
+    border: 2px solid #bdc3c7;
+    background: transparent !important;
+    color: #34495e !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 5px; /* Sedikit jarak antar tombol */
+}
+
+/* Efek saat hover */
+#footerAksiPemeriksaan button:hover {
+    background: #f8f9fa !important;
+    border-color: #7f8c8d;
+}
+
+/* Warna garis tepi spesifik (outline) untuk tombol tertentu */
+#footerAksiPemeriksaan button[onclick*="Simpan"] { border-color: #27ae60 !important; color: #27ae60 !important; }
+#footerAksiPemeriksaan button[onclick*="Baru"] { border-color: #16a085 !important; color: #16a085 !important; }
+#footerAksiPemeriksaan button[onclick*="Hapus"] { border-color: #c0392b !important; color: #c0392b !important; }
+#footerAksiPemeriksaan button[onclick*="Ganti"] { border-color: #d35400 !important; color: #d35400 !important; }
+#footerAksiPemeriksaan button[onclick*="Cetak"] { border-color: #2980b9 !important; color: #2980b9 !important; }
+#footerAksiPemeriksaan button[onclick*="Semua"] { border-color: #7f8c8d !important; color: #7f8c8d !important; }
+#footerAksiPemeriksaan button[onclick*="Keluar"] { border-color: #7f8c8d !important; color: #7f8c8d !important; }
+
+/* Aksen Hijau untuk menu utama/penting */
+.menu-sub-hijau {
+    border-left: 4px solid #27ae60 !important;
+}
+
+/* Aksen Merah untuk menu pendukung/lainnya */
+.menu-sub-merah {
+    border-left: 4px solid #e74c3c !important;
+}
+
